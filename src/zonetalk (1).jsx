@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 /* ============================================================
    ZoneTalk — chat app: DMs, groups, and two live "zone" modes
@@ -23,8 +23,6 @@ const TOKENS = {
   text: "#EAF0F6",
   muted: "#7E93A7",
 };
-
-const ME = { id: "me", name: "You" };
 
 const DM_CONTACTS = [
   { id: "alice", name: "Alice Kponou", type: "dm", color: "#33D6A6" },
@@ -179,7 +177,6 @@ function generateZonePeople(mode, count) {
 }
 
 function broadcastConvFor(mode, people) {
-  const cfg = ZONE_MODES[mode];
   return {
     id: `zone-broadcast-${mode}`,
     name: mode === "ride" ? "This ride 🚗" : "This café 👥",
