@@ -50,6 +50,25 @@ npm test -- --watch=false
 npm run build
 ```
 
+## Production Deploy (Vercel)
+
+Frontend deployment files included:
+
+- `vercel.json`
+- `.env.production.example`
+- `DEPLOY_VERCEL.md`
+
+Backend environment template included:
+
+- `.env.server.example`
+
+Quick deploy:
+
+1. Deploy frontend on Vercel.
+2. Set `REACT_APP_API_URL` in Vercel environment variables.
+3. Deploy backend on a persistent host (Render/Railway/Fly/VPS).
+4. Set `CLIENT_ORIGIN` to your Vercel URL and `SESSION_SECRET` on backend.
+
 ## API Endpoints
 
 - `GET /api/health`
