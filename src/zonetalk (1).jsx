@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import "./zonetalk-nearest.css";
 
 /* ============================================================
    ZoneTalk — chat app: DMs, groups, and two live "zone" modes
@@ -395,7 +396,7 @@ export default function App() {
 
   return (
     <div style={{ background: TOKENS.bg, color: TOKENS.text, fontFamily: "'Inter', sans-serif" }}
-      className="w-full h-full min-h-screen flex justify-center">
+      className="zt-app w-full h-full min-h-screen flex justify-center">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
         .zt-display { font-family: 'Space Grotesk', sans-serif; }
