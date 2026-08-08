@@ -1,0 +1,22 @@
+RUN COMMANDS (PLAIN TEXT)
+
+1) Install dependencies
+npm install
+
+2) Start backend API
+npm run server
+
+3) Start frontend (open second terminal)
+npm start
+
+4) Open in browser
+http://localhost:3000
+
+5) Backend health check
+http://localhost:4000/api/health
+
+6) Build for production
+npm run build
+
+7) Run tests once
+npm test -- --watchAll=false

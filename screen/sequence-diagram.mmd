@@ -1,0 +1,40 @@
+sequenceDiagram
+    autonumber
+    actor User
+    participant UI as ZoneTalk UI (React)
+    participant Store as localStorage/sessionStorage
+    participant Zone as Zone Engine
+    participant Media as Browser Media APIs
+
+    User->>UI: Open app
+    UI->>Store: Load cached conversations/messages
+    UI-->>User: Show Chats view
+
+    User->>UI: Switch to Zone tab
+    UI->>Zone: Generate nearby people (coffee/ride)
+    Zone-->>UI: People list + positions
+    UI-->>User: Show radar or car seat map
+
+    User->>UI: Select nearest person
+    UI->>Store: Load/create direct thread
+    UI-->>User: Open nearest-person chat
+
+    User->>UI: Click Message everyone here
+    UI->>Store: Load/create zone broadcast thread
+    UI-->>User: Open broadcast conversation
+
+    User->>UI: Type message + Send
+    UI->>Store: Persist message with timestamp
+    UI-->>User: Render message bubble
+
+    UI->>UI: Trigger auto-reply timer
+    UI->>Store: Persist simulated reply
+    UI-->>User: Show new reply
+
+    User->>UI: Open emoji picker and insert emoji
+    UI-->>User: Updated input text
+
+    User->>UI: Toggle voice note recording
+    UI->>Media: Request microphone access
+    Media-->>UI: Granted/Denied
+    UI-->>User: Record audio or show warning
