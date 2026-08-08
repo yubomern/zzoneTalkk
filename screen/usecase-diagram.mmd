@@ -1,27 +1,31 @@
-flowchart TB
+flowchart LR
     user([User])
 
-    uc1((Open Chats))
-    uc2((Switch to Zone))
-    uc3((View Nearest People))
-    uc4((Open Direct Chat))
-    uc5((Broadcast to Nearby Group))
-    uc6((Send Text Message))
-    uc7((Pick Emoji))
-    uc8((Record Voice Note))
-    uc9((Play Message Audio))
-    uc10((Rescan Nearby))
-    uc11((View 24h Auto-delete Status))
+    subgraph system[ZoneTalk Chat System - Global Use Cases]
+        ucA((Access Chat Interface))
+        ucB((Manage Conversations))
+        ucC((Explore Zone Mode))
+        ucD((View Nearest People))
+        ucE((Open Direct Chat with Nearby Person))
+        ucF((Broadcast Message to Nearby Group))
+        ucG((Send Text Message))
+        ucH((Use Emoji in Message))
+        ucI((Record Voice Note))
+        ucJ((Play Message Audio))
+        ucK((Rescan Nearby People))
+        ucL((View Message Time and 24h Auto-Delete Status))
+    end
 
-    user --> uc1
-    user --> uc2
-    user --> uc6
-    user --> uc8
-    user --> uc9
+    user --> ucA
+    user --> ucB
+    user --> ucC
+    user --> ucG
+    user --> ucI
+    user --> ucJ
 
-    uc2 --> uc3
-    uc3 --> uc4
-    uc3 --> uc5
-    uc6 --> uc7
-    uc2 --> uc10
-    uc1 --> uc11
+    ucB --> ucL
+    ucC --> ucD
+    ucD --> ucE
+    ucD --> ucF
+    ucC --> ucK
+    ucG --> ucH

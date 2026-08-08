@@ -1,0 +1,36 @@
+@startuml
+left to right direction
+title ZoneTalk - Global Use Case Diagram
+
+actor User
+
+rectangle "ZoneTalk Chat System" {
+  usecase "Access Chat Interface" as UC1
+  usecase "Manage Conversations" as UC2
+  usecase "Explore Zone Mode" as UC3
+  usecase "View Nearest People" as UC4
+  usecase "Open Direct Chat\nwith Nearby Person" as UC5
+  usecase "Broadcast Message\nto Nearby Group" as UC6
+  usecase "Send Text Message" as UC7
+  usecase "Use Emoji in Message" as UC8
+  usecase "Record Voice Note" as UC9
+  usecase "Play Message Audio" as UC10
+  usecase "Rescan Nearby People" as UC11
+  usecase "View Message Time and\n24h Auto-Delete Status" as UC12
+}
+
+User --> UC1
+User --> UC2
+User --> UC3
+User --> UC7
+User --> UC9
+User --> UC10
+
+UC3 .> UC4 : <<include>>
+UC4 .> UC5 : <<include>>
+UC4 .> UC6 : <<include>>
+UC3 .> UC11 : <<extend>>
+UC7 .> UC8 : <<extend>>
+UC2 .> UC12 : <<include>>
+
+@enduml

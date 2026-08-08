@@ -1,0 +1,50 @@
+@startuml
+title ZoneTalk - Sequence Diagram
+
+autonumber
+actor User
+participant "ZoneTalk UI (React)" as UI
+participant "Browser Storage\n(localStorage/sessionStorage)" as Store
+participant "Zone Engine" as Zone
+participant "Browser Media APIs" as Media
+
+User -> UI : Open app
+UI -> Store : Load cached conversations/messages
+UI --> User : Show Chats view
+
+User -> UI : Switch to Zone tab
+UI -> Zone : Generate nearby people (coffee/ride)
+Zone --> UI : Return people list + positions
+UI --> User : Show radar or car seat map
+
+User -> UI : Select nearest person
+UI -> Store : Load/create direct thread
+UI --> User : Open nearest-person chat
+
+User -> UI : Click "Message everyone here"
+UI -> Store : Load/create broadcast thread
+UI --> User : Open zone broadcast conversation
+
+User -> UI : Type message + Send
+UI -> Store : Persist message with timestamp
+UI --> User : Render message bubble
+
+UI -> UI : Start auto-reply timer
+UI -> Store : Persist simulated reply
+UI --> User : Show new reply
+
+User -> UI : Open emoji picker
+UI --> User : Emoji list shown
+
+User -> UI : Toggle voice note recording
+UI -> Media : Request microphone permission
+alt Permission granted
+  Media --> UI : Audio stream
+  UI -> Store : Save audio message
+  UI --> User : Show voice note bubble
+else Permission denied
+  Media --> UI : Permission denied error
+  UI --> User : Show microphone warning
+end
+
+@enduml
